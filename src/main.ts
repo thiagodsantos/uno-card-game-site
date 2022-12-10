@@ -13,10 +13,12 @@ import router from '@/router';
 
 import './assets/main.css'
 
-const i18n = createI18n({
+export const i18n = createI18n({
+  legacy: false,
   locale: 'enUS',
   fallbackLocale: 'enUS',
   messages,
+  globalInjection: true,
 });
 
 const app = createApp(HomeVue);
