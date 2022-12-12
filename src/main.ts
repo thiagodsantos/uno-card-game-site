@@ -7,18 +7,18 @@ import { createPinia } from 'pinia';
 import { createI18n } from 'vue-i18n';
 import PrimeVue from 'primevue/config';
 
-import HomeVue from '@/views/Home.vue'
+import HomeVue from '@/views/HomeView.vue';
 import messages from '@/locale';
 import router from '@/router';
 
-import './assets/main.css'
+import './assets/main.css';
 
 export const i18n = createI18n({
   legacy: false,
+  globalInjection: true,
   locale: 'enUS',
   fallbackLocale: 'enUS',
   messages,
-  globalInjection: true,
 });
 
 const app = createApp(HomeVue);
