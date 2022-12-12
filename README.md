@@ -1,6 +1,6 @@
 # uno-card-game-site
 
-This template should help get you started developing with Vue 3 in Vite.
+Uno card game using Vue 3 with Vite
 
 ## Recommended IDE Setup
 
