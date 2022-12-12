@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps } from "vue";
+import { defineProps } from 'vue';
 import Button from 'primevue/button';
 
 defineProps({
@@ -7,7 +7,6 @@ defineProps({
   text: String,
   icon: String,
 });
-
 </script>
 
 <template>

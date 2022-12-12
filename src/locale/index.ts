@@ -5,13 +5,13 @@ type RoomMessages = {
   create: string;
   join: string;
   joinInput: string;
-}
+};
 
 export type Messages = {
-  room: RoomMessages
-}
+  room: RoomMessages;
+};
 
 export default {
   ptBR,
-  enUS
-}
+  enUS,
+};
