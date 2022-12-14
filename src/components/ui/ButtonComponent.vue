@@ -2,21 +2,22 @@
 import Button from 'primevue/button';
 
 defineProps({
-  class: String,
+  className: String,
   text: String,
   icon: String,
+  onlyIcon: Boolean || undefined,
 });
 </script>
 
 <template>
-  <Button :class="class">
+  <Button :class="className">
     <i v-if="icon" :class="'pi ' + icon"></i>
-    <span>{{ $t(text ?? '') }}</span>
+    <span v-if="!onlyIcon" class="text-margin">{{ $t(text ?? '') }}</span>
   </Button>
 </template>
 
 <style scoped>
-i.pi {
-  padding-right: 10px;
+.text-margin {
+  padding-left: 10px;
 }
 </style>
