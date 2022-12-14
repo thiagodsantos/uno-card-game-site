@@ -2,7 +2,8 @@
 import { ref, watch } from 'vue';
 import { i18n } from '@/main';
 import Button from '@/components/ui/ButtonComponent.vue';
-import InputText from '@/components/ui/InputComponent.vue';
+import InputText from '@/components/ui/InputTextComponent.vue';
+import InputButtonComponent from '@/components/ui/InputButtonComponent.vue';
 
 enum EnterRoomEnum {
   create = 'room.create',
@@ -69,13 +70,24 @@ watch(enterRoom, (newValue: string) => {
       class="input-room"
       :placeholder="placeholderPlayerName"
     />
-    <InputText
-      v-if="showInputs"
-      id="room-id"
-      class="input-room"
-      :disabled="disableInput"
-      :placeholder="placeholderRoom"
-    />
+    <div v-if="showInputs">
+      <InputButtonComponent
+        v-if="enterRoom === EnterRoomEnum.create"
+        buttonIcon="pi-bolt"
+        buttonClass="p-button-success"
+        class="input-room"
+        :disabled="disableInput"
+        :placeholder="placeholderRoom"
+      />
+      <InputButtonComponent
+        v-if="enterRoom === EnterRoomEnum.join"
+        buttonIcon="pi-bolt"
+        buttonClass="p-button-help"
+        class="input-room"
+        :disabled="disableInput"
+        :placeholder="placeholderRoom"
+      />
+    </div>
   </span>
 </template>
 
