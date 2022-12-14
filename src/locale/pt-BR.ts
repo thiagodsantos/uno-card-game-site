@@ -5,6 +5,7 @@ const messages: Messages = {
     create: 'Criar Sala',
     join: 'Entrar na Sala',
     joinInput: 'ID da Sala',
+    playerName: 'Nome do Jogador',
   },
 };
 

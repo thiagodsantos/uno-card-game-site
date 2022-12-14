@@ -5,6 +5,7 @@ type RoomMessages = {
   create: string;
   join: string;
   joinInput: string;
+  playerName: string;
 };
 
 export type Messages = {

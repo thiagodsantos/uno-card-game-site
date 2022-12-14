@@ -5,6 +5,7 @@ const messages: Messages = {
     create: 'Create Room',
     join: 'Join Room',
     joinInput: 'Room ID',
+    playerName: 'Player Name',
   },
 };
 

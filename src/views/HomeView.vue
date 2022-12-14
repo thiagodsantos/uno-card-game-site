@@ -1,58 +1,86 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { i18n } from '@/main';
 import Button from '@/components/ui/ButtonComponent.vue';
 import InputText from '@/components/ui/InputComponent.vue';
 
-const showInput = ref(false);
+enum EnterRoomEnum {
+  create = 'room.create',
+  join = 'room.join',
+}
+
+const classUnselected = 'p-button-text';
+
+const showInputs = ref(false);
 const disableInput = ref(false);
 const enterRoom = ref('');
-const placeholderRoom = ref('');
+const joinSelected = ref('p-button-text');
+const createSelected = ref(classUnselected);
 
-const createRoom = () => {
-  showInput.value = true;
-  enterRoom.value = 'room.create';
-  disableInput.value = true;
-  placeholderRoom.value = i18n.global.t('');
-};
+const placeholderPlayerName = i18n.global.t('room.playerName');
+const placeholderRoom = i18n.global.t('room.joinInput');
 
 const joinRoom = () => {
-  enterRoom.value = 'room.join';
-  showInput.value = true;
+  showInputs.value = true;
   disableInput.value = false;
-  placeholderRoom.value = i18n.global.t('room.joinInput');
+  enterRoom.value = EnterRoomEnum.join;
 };
+
+const createRoom = () => {
+  enterRoom.value = EnterRoomEnum.create;
+  showInputs.value = true;
+  disableInput.value = true;
+};
+
+watch(enterRoom, (newValue: string) => {
+  const classSelected = 'p-button-raised';
+
+  if (newValue === EnterRoomEnum.join) {
+    joinSelected.value = classSelected;
+    createSelected.value = classUnselected;
+  }
+
+  if (newValue === EnterRoomEnum.create) {
+    joinSelected.value = classUnselected;
+    createSelected.value = classSelected;
+  }
+});
 </script>
 
 <template>
   <span class="template p-buttonset">
     <Button
-      class="p-button-text p-button-success"
-      text="room.create"
-      icon="pi-plus"
-      @click="createRoom"
-    >
-    </Button>
-    <Button
-      class="p-button-text p-button-help"
-      text="room.join"
+      id="button-room-join"
+      :class="joinSelected + ' p-button-help'"
+      :text="EnterRoomEnum.join"
       icon="pi-user-plus"
       @click="joinRoom"
-    >
-    </Button>
+    />
+    <Button
+      id="button-room-join"
+      :class="createSelected + ' p-button-success'"
+      :text="EnterRoomEnum.create"
+      icon="pi-plus"
+      @click="createRoom"
+    />
     <InputText
-      v-if="showInput"
-      class="input-room-id"
+      v-if="showInputs"
+      id="player-name"
+      class="input-room"
+      :placeholder="placeholderPlayerName"
+    />
+    <InputText
+      v-if="showInputs"
       id="room-id"
+      class="input-room"
       :disabled="disableInput"
       :placeholder="placeholderRoom"
-    >
-    </InputText>
+    />
   </span>
 </template>
 
 <style scoped>
-.input-room-id {
+.input-room {
   margin-top: 10px;
 }
 </style>
