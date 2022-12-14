@@ -1,5 +1,5 @@
 import 'primevue/resources/primevue.min.css';
-import 'primevue/resources/themes/fluent-light/theme.css';
+import 'primevue/resources/themes/bootstrap4-dark-blue/theme.css';
 import 'primeicons/primeicons.css';
 
 import { createApp } from 'vue';
@@ -11,7 +11,7 @@ import HomeVue from '@/views/HomeView.vue';
 import messages from '@/locale';
 import router from '@/router';
 
-import './assets/main.css';
+import '@/assets/main.css';
 
 export const i18n = createI18n({
   legacy: false,
