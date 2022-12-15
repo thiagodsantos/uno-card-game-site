@@ -1,11 +1,17 @@
 import type { Messages } from '.';
 
 const messages: Messages = {
-  room: {
-    create: 'Create Room',
-    join: 'Join Room',
-    joinInput: 'Room ID',
-    playerName: 'Player Name',
+  home: {
+    button: {
+      create: 'Create Room',
+      join: 'Join Room',
+    },
+    input: {
+      placeholder: {
+        playerName: 'Player Name',
+        roomId: 'Room ID',
+      }
+    },
   },
 };
 

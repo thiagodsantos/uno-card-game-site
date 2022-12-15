@@ -7,6 +7,8 @@ defineProps({
   disabled: Boolean,
   buttonIcon: String,
   buttonClass: String,
+  buttonId: String,
+  buttonClick: Function,
 });
 </script>
 
@@ -17,6 +19,7 @@ defineProps({
       :icon="'pi ' + buttonIcon"
       :class="buttonClass"
       :onlyIcon="true"
+      @click="buttonClick"
     />
   </div>
 </template>
