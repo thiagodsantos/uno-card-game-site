@@ -1,18 +1,22 @@
 import enUS from './en-US';
-import ptBR from './pt-BR';
 
-type RoomMessages = {
-  create: string;
-  join: string;
-  joinInput: string;
-  playerName: string;
+type HomeMessages = {
+  button: {
+    create: string;
+    join: string;
+  };
+  input: {
+    placeholder: {
+      playerName: string;
+      roomId: string;
+    };
+  };
 };
 
 export type Messages = {
-  room: RoomMessages;
+  home: HomeMessages;
 };
 
 export default {
-  ptBR,
   enUS,
 };
