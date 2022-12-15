@@ -40,7 +40,7 @@ const enterRoom = ref('');
 const buttonClass = ref('');
 const buttonIcon = ref('');
 const joinSelected = ref(ButtonActiveEnum.unselected);
-const createSelected = ref(ButtonActiveEnum.selected);
+const createSelected = ref(ButtonActiveEnum.unselected);
 
 const joinRoom = () => {
   showInputs.value = true;
@@ -68,7 +68,7 @@ watch(enterRoom, (newValue: string) => {
   }
 
   if (newValue === ButtonEventsEnum.create) {
-    joinSelected.value = ButtonActiveEnum.unselected;
+    createSelected.value = ButtonActiveEnum.selected;
   }
 });
 
@@ -101,23 +101,23 @@ watch(createSelected, (newValue: ButtonActiveEnum) => {
       icon="pi-plus"
       @click="createRoom"
     />
-    <div v-if="showInputs">
-      <InputText
-        id="player-name"
-        class="input-room"
-        :placeholder="placeholderPlayerName"
-      />
-      <InputButtonComponent
-        class="input-room"
-        buttonId="button-enter-room"
-        :buttonClick="handlerEnterRoom"
-        :buttonIcon="buttonIcon"
-        :buttonClass="buttonClass"
-        :disabled="disableInput"
-        :placeholder="placeholderRoom"
-      />
-    </div>
   </span>
+  <div v-if="showInputs">
+    <InputText
+      id="player-name"
+      class="input-room"
+      :placeholder="placeholderPlayerName"
+    />
+    <InputButtonComponent
+      class="input-room"
+      buttonId="button-enter-room"
+      :buttonClick="handlerEnterRoom"
+      :buttonIcon="buttonIcon"
+      :buttonClass="buttonClass"
+      :disabled="disableInput"
+      :placeholder="placeholderRoom"
+    />
+  </div>
 </template>
 
 <style scoped>
